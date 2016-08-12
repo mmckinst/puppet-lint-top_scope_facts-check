@@ -29,6 +29,19 @@ describe 'top_scope_facts' do
         expect(problems).to contain_warning(msg).on_line(1).in_column(1)
       end
     end
+
+    context 'fact variable using top scope with curly braces in double quote' do
+      let(:code) { '"${::operatingsystem}"' }
+
+      it 'should only detect a single problem' do
+        expect(problems).to have(1).problem
+      end
+
+      it 'should create a warning' do
+        expect(problems).to contain_warning(msg).on_line(1).in_column(3)
+      end
+    end
+
   end
 
   context 'with fix enabled' do
@@ -70,6 +83,19 @@ describe 'top_scope_facts' do
         expect(manifest).to eq("$facts['operatingsystem']")
       end
     end
+
+    context 'fact variable using top scope with curly braces in double quote' do
+      let(:code) { '"${::operatingsystem}"' }
+
+      it 'should fix the problem' do
+        expect(problems).to contain_fixed(msg).on_line(1).in_column(3)
+      end
+
+      it 'should should use the facts hash' do
+        expect(manifest).to eq('"${facts[\'operatingsystem\']}"')
+      end
+    end
+
   end
 end
 
