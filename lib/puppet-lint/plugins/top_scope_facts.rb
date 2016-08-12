@@ -1,7 +1,7 @@
 PuppetLint.new_check(:top_scope_facts) do
   def check
     tokens.select { |x| x.type == :VARIABLE}.each do |token|
-      if token.value.match(/^::/)
+      if token.value.match(/^::/) and not token.value.match(/^::(facts|trusted)\[/)
         notify :warning, {
           :message => 'top scope fact instead of facts hash',
           :line    => token.line,

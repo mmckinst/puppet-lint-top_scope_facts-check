@@ -10,8 +10,24 @@ describe 'top_scope_facts' do
         expect(problems).to have(0).problem
       end
     end    
-    context 'non-fact variable with two colons ' do
+    context 'non-fact variable with two colons' do
       let(:code) { "$foo::bar" }
+
+      it 'should not detect any problems' do
+        expect(problems).to have(0).problem
+      end
+    end
+
+    context 'top scope $::facts hash' do
+      let(:code) { "$::facts['os']['family']" }
+
+      it 'should not detect any problems' do
+        expect(problems).to have(0).problem
+      end
+    end
+
+    context 'top scope $::trusted hash' do
+      let(:code) { "$::trusted['certname']" }
 
       it 'should not detect any problems' do
         expect(problems).to have(0).problem
@@ -60,8 +76,24 @@ describe 'top_scope_facts' do
         expect(problems).to have(0).problem
       end
     end    
-    context 'non-fact variable with two colons ' do
+    context 'non-fact variable with two colons' do
       let(:code) { "$foo::bar" }
+
+      it 'should not detect any problems' do
+        expect(problems).to have(0).problem
+      end
+    end
+
+    context 'top scope $::facts hash' do
+      let(:code) { "$::facts['os']['family']" }
+
+      it 'should not detect any problems' do
+        expect(problems).to have(0).problem
+      end
+    end
+
+    context 'top scope $::trusted hash' do
+      let(:code) { "$::trusted['certname']" }
 
       it 'should not detect any problems' do
         expect(problems).to have(0).problem
