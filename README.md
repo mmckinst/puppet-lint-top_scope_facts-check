@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/mmckinst/puppet-lint-top_scope_facts-check.svg?branch=master)](https://travis-ci.org/mmckinst/puppet-lint-top_scope_facts-check)
+[![Gem](https://img.shields.io/gem/v/puppet-lint-top_scope_facts-check.svg?maxAge=2592000)](https://rubygems.org/gems/puppet-lint-top_scope_facts-check)
 
 A puppet-lint plugin to check you are not using top scope fact variables like
 `$::operatingsystem`. You should use the $facts hash like
