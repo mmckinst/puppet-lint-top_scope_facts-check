@@ -128,6 +128,42 @@ describe 'top_scope_facts' do
       end
     end
 
+    context 'with custom top scope fact variables' do
+      before do
+        PuppetLint.configuration.top_scope_variables = ['location', 'role']
+      end
+
+      context 'fact variable using $facts hash' do
+        let(:code) { "$facts['operatingsystem']" }
+
+        it 'should not detect any problems' do
+          expect(problems).to have(0).problem
+        end
+      end
+
+      context 'fact variable using $trusted hash' do
+        let(:code) { "$trusted['certname']" }
+
+        it 'should not detect any problems' do
+          expect(problems).to have(0).problem
+        end
+      end
+
+      context 'whitelisted top scope variable $::location' do
+        let(:code) { "$::location" }
+
+        it 'should not detect any problems' do
+          expect(problems).to have(0).problem
+        end
+      end
+      context 'non-whitelisted top scope variable $::application' do
+        let(:code) { "$::application" }
+
+        it 'should not detect any problems' do
+          expect(problems).to have(1).problem
+        end
+      end
+    end
   end
 end
 
