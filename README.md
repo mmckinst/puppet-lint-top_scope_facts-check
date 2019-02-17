@@ -5,6 +5,11 @@ A puppet-lint plugin to check you are not using top scope fact variables like
 `$::operatingsystem`. You should use the $facts hash like
 `$facts['operatingsystem']` instead.
 
+This linter will not covert from the legacy facts like
+`$facts['operatingsystem']` to `$facts['os']['name']`. The [legacy
+facts](https://github.com/mmckinst/puppet-lint-legacy_facts-check) linter can be
+used to accomplish that.
+
 ## Overview
 
 In puppet 2.x facts were top scope variables and accessed as `$operatingsystem`

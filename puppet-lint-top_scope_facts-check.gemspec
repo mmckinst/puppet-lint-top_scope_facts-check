@@ -12,7 +12,8 @@ Gem::Specification.new do |spec|
     'spec/**/*',
   ]
   spec.test_files  = Dir['spec/**/*']
-  spec.summary     = 'A puppet-lint plugin to check you are not using top scope fact variables like $::operatingsystem'
+  spec.summary     = 'Check for top scope facts and convert them to the facts hash'
+
   spec.description = <<-EOF
   A puppet-lint plugin to check you are not using top scope fact variables like
   $::operatingsystem. You should use the $facts hash like
