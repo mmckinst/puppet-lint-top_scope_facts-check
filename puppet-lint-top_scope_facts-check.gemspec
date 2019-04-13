@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name        = 'puppet-lint-top_scope_facts-check'
-  spec.version     = '0.0.1'
+  spec.version     = '1.0.0'
   spec.homepage    = 'https://github.com/mmckinst/puppet-lint-top_scope_facts-check'
   spec.license     = 'Apache-2.0'
   spec.author      = 'Mark McKinstry'
@@ -12,7 +12,8 @@ Gem::Specification.new do |spec|
     'spec/**/*',
   ]
   spec.test_files  = Dir['spec/**/*']
-  spec.summary     = 'A puppet-lint plugin to check you are not using top scope fact variables like $::operatingsystem'
+  spec.summary     = 'Check for top scope facts and convert them to the facts hash'
+
   spec.description = <<-EOF
   A puppet-lint plugin to check you are not using top scope fact variables like
   $::operatingsystem. You should use the $facts hash like

@@ -1,9 +1,16 @@
 [![Build Status](https://travis-ci.org/mmckinst/puppet-lint-top_scope_facts-check.svg?branch=master)](https://travis-ci.org/mmckinst/puppet-lint-top_scope_facts-check)
 [![Gem](https://img.shields.io/gem/v/puppet-lint-top_scope_facts-check.svg?maxAge=2592000)](https://rubygems.org/gems/puppet-lint-top_scope_facts-check)
+![](https://img.shields.io/gem/dtv/puppet-lint-top_scope_facts-check.svg?style=flat)
+![](https://img.shields.io/gem/dt/puppet-lint-top_scope_facts-check.svg?style=flat)
 
 A puppet-lint plugin to check you are not using top scope fact variables like
 `$::operatingsystem`. You should use the $facts hash like
 `$facts['operatingsystem']` instead.
+
+This linter will not covert from the legacy facts like
+`$facts['operatingsystem']` to `$facts['os']['name']`. The [legacy
+facts](https://github.com/mmckinst/puppet-lint-legacy_facts-check) linter can be
+used to accomplish that.
 
 ## Overview
 
