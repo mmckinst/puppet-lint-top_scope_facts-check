@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/mmckinst/puppet-lint-top_scope_facts-check.svg?branch=master)](https://travis-ci.org/mmckinst/puppet-lint-top_scope_facts-check)
-[![Gem](https://img.shields.io/gem/v/puppet-lint-top_scope_facts-check.svg?maxAge=2592000)](https://rubygems.org/gems/puppet-lint-top_scope_facts-check)
-![](https://img.shields.io/gem/dtv/puppet-lint-top_scope_facts-check.svg?style=flat)
-![](https://img.shields.io/gem/dt/puppet-lint-top_scope_facts-check.svg?style=flat)
+[![Gem](https://img.shields.io/gem/v/puppet-lint-top_scope_facts-check.svg)](https://rubygems.org/gems/puppet-lint-top_scope_facts-check)
+[![Total Downloads](https://img.shields.io/gem/dt/puppet-lint-top_scope_facts-check.svg)](https://rubygems.org/gems/puppet-lint-top_scope_facts-check)
+[![Latest Downloads](https://img.shields.io/gem/dtv/puppet-lint-top_scope_facts-check.svg)](https://rubygems.org/gems/puppet-lint-top_scope_facts-check)
 
 A puppet-lint plugin to check you are not using top scope fact variables like
 `$::operatingsystem`. You should use the $facts hash like
