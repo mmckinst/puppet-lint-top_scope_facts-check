@@ -1,9 +1,9 @@
 PuppetLint.new_check(:top_scope_facts) do
-  VAR_TYPES = Set[:VARIABLE, :UNENC_VARIABLE]
+  TOP_SCOPE_FACTS_VAR_TYPES = Set[:VARIABLE, :UNENC_VARIABLE]
   def check
     whitelist = ['trusted', 'facts'] + (PuppetLint.configuration.top_scope_variables || [])
     whitelist = whitelist.join('|')
-    tokens.select { |x| VAR_TYPES.include?(x.type) }.each do |token|
+    tokens.select { |x| TOP_SCOPE_FACTS_VAR_TYPES.include?(x.type) }.each do |token|
       if token.value.match(/^::/) and not token.value.match(/^::(#{whitelist})\[?/)
         notify :warning, {
           :message => 'top scope fact instead of facts hash',
