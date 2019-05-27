@@ -1,3 +1,7 @@
+1.0.1 - 2019-05-26
+---
+* fix a warning from https://github.com/mmckinst/puppet-lint-top_scope_facts-check/pull/5
+
 1.0.0 - 2019-04-12
 ---
 * fix variables in double quoted strings
