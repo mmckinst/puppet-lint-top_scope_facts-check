@@ -98,6 +98,16 @@ insert the following line to your `Rakefile`.
 ```ruby
 PuppetLint.configuration.send('disable_top_scope_facts')
 ```
+Alternatively, you can disable it directly in your puppet manifest.
+
+```puppet
+# lint:ignore:top_scope_facts
+$service_name = $::operatingsystem {
+  'CentOS' => 'httpd',
+  'Debian' => 'apache2',
+}
+# lint:endignore
+```
 
 ## License
 
