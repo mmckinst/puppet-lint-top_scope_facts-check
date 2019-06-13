@@ -16,14 +16,14 @@ used to accomplish that.
 
 In puppet 2.x facts were top scope variables and accessed as `$operatingsystem`
 or `$::operatingsystem`, the
-[latter being far more common](https://docs.puppet.com/puppet/3.8/reference/lang_facts_and_builtin_vars.html#historical-note-about-)
+[latter being far more common](https://puppet.com/docs/puppet/3.8/lang_facts_and_builtin_vars.html#historical-note-about-)
 especially because the
 [linter enforces that convention](http://puppet-lint.com/checks/variable_scope/).
 
 Puppet 3.5 added a `$facts` hash to access facts like
 `$facts['operatingsystem']`. This works if you set `trusted_node_data = true`
 but it was
-[not enabled by default](https://docs.puppet.com/puppet/3.5/reference/release_notes.html#global-facts-hash). Puppet
+[not enabled by default](https://github.com/puppetlabs/docs-archive/blob/master/puppet/3.5/release_notes.markdown#global-facts-hash). Puppet
 4 has it enabled by default.
 
 This puppet-lint plugin will help find facts referenced as top scope variables
@@ -97,6 +97,16 @@ insert the following line to your `Rakefile`.
 
 ```ruby
 PuppetLint.configuration.send('disable_top_scope_facts')
+```
+Alternatively, you can disable it directly in your puppet manifest.
+
+```puppet
+# lint:ignore:top_scope_facts
+$service_name = $::operatingsystem {
+  'CentOS' => 'httpd',
+  'Debian' => 'apache2',
+}
+# lint:endignore
 ```
 
 ## License
