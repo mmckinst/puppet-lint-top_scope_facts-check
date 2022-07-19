@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   $facts['operatingsystem'] instead.
   EOF
 
-  spec.add_dependency             'puppet-lint', '~> 2.0'
+  spec.add_dependency             'puppet-lint', '~> 2.4'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rspec-its', '~> 1.0'
   spec.add_development_dependency 'rspec-json_expectations'

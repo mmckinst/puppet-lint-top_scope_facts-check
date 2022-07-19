@@ -54,7 +54,7 @@ describe 'top_scope_facts' do
       end
 
       it 'should create a warning' do
-        expect(problems).to contain_warning(msg).on_line(1).in_column(3)
+        expect(problems).to contain_warning(msg).on_line(1).in_column(4)
       end
     end
 
@@ -120,7 +120,7 @@ describe 'top_scope_facts' do
       let(:code) { '"${::operatingsystem}"' }
 
       it 'should fix the problem' do
-        expect(problems).to contain_fixed(msg).on_line(1).in_column(3)
+        expect(problems).to contain_fixed(msg).on_line(1).in_column(4)
       end
 
       it 'should should use the facts hash' do
