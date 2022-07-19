@@ -58,6 +58,30 @@ describe 'top_scope_facts' do
       end
     end
 
+    context 'out of scope namespaced variable with leading ::' do
+      let(:code) { '$::profile::foo::bar' }
+
+      it 'should not detect any problems' do
+        expect(problems).to have(0).problem
+      end
+
+      context 'inside double quotes' do
+        let(:code) { '"$::profile::foo::bar"' }
+
+        it 'should not detect any problems' do
+          expect(problems).to have(0).problem
+        end
+      end
+
+
+      context 'with curly braces in double quote' do
+        let(:code) { '"${::profile::foo::bar}"' }
+
+        it 'should not detect any problems' do
+          expect(problems).to have(0).problem
+        end
+      end
+    end
   end
 
   context 'with fix enabled' do
