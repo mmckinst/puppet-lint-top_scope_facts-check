@@ -54,10 +54,34 @@ describe 'top_scope_facts' do
       end
 
       it 'should create a warning' do
-        expect(problems).to contain_warning(msg).on_line(1).in_column(3)
+        expect(problems).to contain_warning(msg).on_line(1).in_column(4)
       end
     end
 
+    context 'out of scope namespaced variable with leading ::' do
+      let(:code) { '$::profile::foo::bar' }
+
+      it 'should not detect any problems' do
+        expect(problems).to have(0).problem
+      end
+
+      context 'inside double quotes' do
+        let(:code) { '"$::profile::foo::bar"' }
+
+        it 'should not detect any problems' do
+          expect(problems).to have(0).problem
+        end
+      end
+
+
+      context 'with curly braces in double quote' do
+        let(:code) { '"${::profile::foo::bar}"' }
+
+        it 'should not detect any problems' do
+          expect(problems).to have(0).problem
+        end
+      end
+    end
   end
 
   context 'with fix enabled' do
@@ -120,7 +144,7 @@ describe 'top_scope_facts' do
       let(:code) { '"${::operatingsystem}"' }
 
       it 'should fix the problem' do
-        expect(problems).to contain_fixed(msg).on_line(1).in_column(3)
+        expect(problems).to contain_fixed(msg).on_line(1).in_column(4)
       end
 
       it 'should should use the facts hash' do
